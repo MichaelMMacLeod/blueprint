@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+echo "#!/bin/sbcl --script" > blueprint
+cat blueprint.lisp >> blueprint
+echo "(run-args)" >> blueprint
+
+chmod +x blueprint

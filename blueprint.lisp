@@ -73,5 +73,3 @@
   (with-args ("--run" parser-name)
     (load-config parser-name)
     (format t "~a" (parse-standard-input))))
-
-(run-args)
