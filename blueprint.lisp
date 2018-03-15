@@ -13,7 +13,7 @@
 (defun make-config ()
   (setf config (make-hash-table :test 'equal)))
 
-(defun add-token (token value)
+(defun set-token (token value)
   (setf (gethash token config) value))
 
 (defun get-token (token)
@@ -63,9 +63,9 @@
   (with-args ("--create-parser" parser-name)
     (make-config)
     (write-config parser-name))
-  (with-args (parser-name "--add-token" token value)
+  (with-args (parser-name "--set-token" token value)
     (load-config parser-name)
-    (add-token token value)
+    (set-token token value)
     (write-config parser-name))
   (with-args (parser-name "--list-tokens")
     (load-config parser-name)
