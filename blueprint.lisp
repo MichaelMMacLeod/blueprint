@@ -20,15 +20,15 @@
   (gethash token config))
 
 (defun write-config (name)
-  (ensure-directories-exist "~/.config/bpt/")
-  (with-open-file (out (format nil "~~/.config/bpt/~a" name)
+  (ensure-directories-exist "~/.config/blueprint/")
+  (with-open-file (out (format nil "~~/.config/blueprint/~a" name)
                        :direction :output
                        :if-exists :supersede)
     (with-standard-io-syntax
       (print config out))))
 
 (defun load-config (name)
-  (with-open-file (in (format nil "~~/.config/bpt/~a" name))
+  (with-open-file (in (format nil "~~/.config/blueprint/~a" name))
     (with-standard-io-syntax
       (setf config (read in)))))
 
