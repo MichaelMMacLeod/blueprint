@@ -1,6 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/sh
 
-echo "#!/bin/sbcl --script" > blueprint
+echo "#!/usr/bin/sbcl --script" > blueprint
 cat blueprint.lisp >> blueprint
 echo "(run-args)" >> blueprint
 
