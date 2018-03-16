@@ -12,6 +12,7 @@
   (--run)
   (--list-tokens)
   (--set-token)
-  (--make-parser))
+  (--make-parser)
+  (--make-executable))
 
 (read-args)

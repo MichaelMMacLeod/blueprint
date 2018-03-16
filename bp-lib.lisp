@@ -19,7 +19,8 @@
            :--parse-token
            :--set-token
            :--list-tokens
-           :--run))
+           :--run
+           :--make-executable))
 
 (in-package :macleod.bp-lib)
 
@@ -58,15 +59,15 @@
 
 (defun read-token (parser)
   (read-char)
-  (loop for curr = (read-char t nil)
+  (loop for curr = (read-char *standard-input* nil)
         if (char= #\] curr)
           do (return (coerce (get-token (coerce xs 'string) parser) 'list))
         else
           collect curr into xs))
 
 (defun parse-standard-input (parser)
-  (loop for curr = (read-char t nil)
-        for next = (peek-char nil t nil)
+  (loop for curr = (read-char *standard-input* nil)
+        for next = (peek-char nil *standard-input* nil)
         if (null curr)
           return (coerce xs 'string)
         else if (and (char= #\# curr)
@@ -92,3 +93,12 @@
 (defun --run ()
   (with-args (parser-name "--run")
     (format t "~a" (parse-standard-input (load-parser parser-name)))))
+
+(defun --make-executable ()
+  (with-args (parser-name "--make-executable")
+    (let ((parser (load-parser parser-name)))
+      (list-tokens parser)
+      (sb-ext:save-lisp-and-die 
+        parser-name
+        :toplevel #'(lambda () (format t "~a" (parse-standard-input parser)))
+        :executable t))))
