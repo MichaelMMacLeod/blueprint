@@ -97,7 +97,6 @@
 (defun --make-executable ()
   (with-args (parser-name "--make-executable")
     (let ((parser (load-parser parser-name)))
-      (list-tokens parser)
       (sb-ext:save-lisp-and-die 
         parser-name
         :toplevel #'(lambda () (format t "~a" (parse-standard-input parser)))
