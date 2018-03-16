@@ -52,7 +52,7 @@
         (print parser out)))))
 
 (defun load-parser (parser-name)
-  "Reads the parser with the given name."
+  "Reads the parser with the given name from a file."
   (with-open-file (in (make-parser-path parser-name))
     (with-standard-io-syntax
       (read in))))
@@ -111,8 +111,8 @@ options are supplied."
 
 (defun --make-executable ()
   "Loads a parser, then dumps the core image to a file in the current
-directory. The file is executable, and will act like --run has been
-supplied."
+directory if the proper commandline options are supplied. The file is 
+executable, and will act like --run has been supplied."
   (with-args (parser-name "--make-executable")
     (let ((parser (load-parser parser-name)))
       (sb-ext:save-lisp-and-die 
