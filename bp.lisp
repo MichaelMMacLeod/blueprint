@@ -10,6 +10,7 @@
 
 (defun read-args ()
   (--run)
+  (--list-parsers)
   (--list-tokens)
   (--set-token)
   (--make-parser)

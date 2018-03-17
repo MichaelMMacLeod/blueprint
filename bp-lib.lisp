@@ -6,6 +6,7 @@
   (:use :common-lisp
         :macleod.args)
   (:export :make-parser
+           :list-parsers
            :set-token
            :get-token
            :list-tokens
@@ -16,6 +17,7 @@
            :read-token
            :parse-standard-input
            :--make-parser
+           :--list-parsers
            :--parse-token
            :--set-token
            :--list-tokens
@@ -61,8 +63,14 @@
     (with-standard-io-syntax
       (read in))))
 
-(defun read-token (parser)
-  "Returns the token starting at the current character in *standard-input*.
+(defun list-parsers ()
+  "Lists all (non-executable) parser."
+  (ensure-directories-exist "~/.config/blueprint/parsers/")
+  (let ((parsers (mapcar #'pathname-name 
+                         (directory "~/.config/blueprint/parsers/*"))))
+    (format t "~{~a~%~}" parsers)))
+
+(defun read-token (parser) "Returns the token starting at the current character in *standard-input*.
 The stream should start at a '[', as in '[token-name]'. read-token will
 then consume '[token-name]' and return the value of the token 'token-name'
 in the parser (or '', if there is no key 'token-name' in parser)."
@@ -90,6 +98,11 @@ with their corresponding values in parser."
   "Runs make-parser if the proper commandline options are supplied."
   (with-args ("--make-parser" parser-name)
     (make-parser parser-name)))
+
+(defun --list-parsers ()
+  "Runs list-parsers if the proper commandline options are supplied."
+  (with-args ("--list-parsers")
+    (list-parsers)))
 
 (defun --set-token ()
   "Runs set-token if the proper commandline options are supplied."
