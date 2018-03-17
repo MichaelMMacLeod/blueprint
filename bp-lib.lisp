@@ -1,10 +1,7 @@
 (in-package :cl-user)
 
-(load "args.lisp")
-
 (defpackage :macleod.bp-lib
-  (:use :common-lisp
-        :macleod.args)
+  (:use :common-lisp :macleod.args)
   (:export :make-parser
            :list-parsers
            :set-token

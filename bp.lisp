@@ -1,7 +1,5 @@
 (in-package :cl-user)
 
-(load "bp-lib.lisp")
-
 (defpackage :macleod.bp
   (:use :common-lisp
         :macleod.bp-lib))
