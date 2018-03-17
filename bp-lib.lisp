@@ -65,7 +65,7 @@
       (read in))))
 
 (defun list-parsers ()
-  "Lists all (non-executable) parser."
+  "Lists all (non-executable) parsers."
   (ensure-directories-exist "~/.config/blueprint/parsers/")
   (let ((parsers (mapcar #'pathname-name 
                          (directory "~/.config/blueprint/parsers/*"))))
