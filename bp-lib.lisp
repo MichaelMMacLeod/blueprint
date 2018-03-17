@@ -24,10 +24,6 @@
 
 (in-package :macleod.bp-lib)
 
-(defun make-parser (parser-name)
-  "Creates a hash table with string equality and writes it to a file."
-  (write-parser (make-hash-table :test 'equal) parser-name))
-
 (defun set-token (token value parser)
   "Sets a key in parser to a value."
   (setf (gethash token parser) value))
@@ -54,6 +50,10 @@
                          :if-exists :supersede)
       (with-standard-io-syntax
         (print parser out)))))
+
+(defun make-parser (parser-name)
+  "Creates a hash table with string equality and writes it to a file."
+  (write-parser (make-hash-table :test 'equal) parser-name))
 
 (defun load-parser (parser-name)
   "Reads the parser with the given name from a file."
