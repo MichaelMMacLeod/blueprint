@@ -14,6 +14,7 @@
   (--list-tokens)
   (--set-token)
   (--make-parser)
-  (--make-executable))
+  (--make-executable)
+  (--help))
 
 (read-args)
