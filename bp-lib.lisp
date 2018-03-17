@@ -71,7 +71,8 @@
                          (directory "~/.config/blueprint/parsers/*"))))
     (format t "~{~a~%~}" parsers)))
 
-(defun read-token (parser) "Returns the token starting at the current character in *standard-input*.
+(defun read-token (parser) 
+  "Returns the token starting at the current character in *standard-input*.
 The stream should start at a '[', as in '[token-name]'. read-token will
 then consume '[token-name]' and return the value of the token 'token-name'
 in the parser (or '', if there is no key 'token-name' in parser)."
