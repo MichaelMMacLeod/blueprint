@@ -1,9 +1,9 @@
-(in-package :cl-user)
+(in-package #:cl-user)
 
-(defpackage :macleod.bp-system
-  (:use :common-lisp :asdf))
+(defpackage #:macleod.bp-system
+  (:use #:common-lisp #:asdf))
 
-(in-package :macleod.bp-system)
+(in-package #:macleod.bp-system)
 
 (defsystem "bp"
            :description "bp - parse file blueprints"
