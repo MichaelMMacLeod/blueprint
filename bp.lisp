@@ -1,28 +1,31 @@
-(in-package :cl-user)
+(in-package #:cl-user)
 
-(defpackage :macleod.bp
-  (:use :common-lisp :macleod.args)
-  (:export :make-parser
-           :list-parsers
-           :set-token
-           :get-token
-           :list-tokens
-           :make-parser-path
-           :write-parser
-           :load-parser
-           :make-parser
-           :read-token
-           :parse-standard-input
-           :--help
-           :--make-parser
-           :--list-parsers
-           :--parse-token
-           :--set-token
-           :--list-tokens
-           :--run
-           :--make-executable))
+(defpackage #:macleod.bp
+  (:use 
+    #:common-lisp 
+    #:macleod.args)
+  (:export 
+    #:make-parser
+    #:list-parsers
+    #:set-token
+    #:get-token
+    #:list-tokens
+    #:make-parser-path
+    #:write-parser
+    #:load-parser
+    #:make-parser
+    #:read-token
+    #:parse-standard-input
+    #:--help
+    #:--make-parser
+    #:--list-parsers
+    #:--parse-token
+    #:--set-token
+    #:--list-tokens
+    #:--run
+    #:--make-executable))
 
-(in-package :macleod.bp)
+(in-package #:macleod.bp)
 
 (defun set-token (token value parser)
   "Sets a key in parser to a value."
