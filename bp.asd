@@ -11,4 +11,4 @@
            :author "Michael MacLeod <michaelmmacleod@gmail.com>"
            :license "MIT"
            :depends-on (:args) ; https://github.com/michaelmmacleod/args.git
-           :components ((:file "bp-lib")))
+           :components ((:file "bp")))
